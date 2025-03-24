@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster Survivors - Battle Endless Hordes in this Action-Packed Adventure Game</title>
-    <meta name="description" content="Play Monster Survivors online - an action-packed survival game where you battle endless hordes of monsters with upgradable weapons and abilities.">
+    <title>怪物幸存者 - 在这款动作冒险游戏中战胜无尽的敌人</title>
+    <meta name="description" content="在线畅玩怪物幸存者 - 一款动作丰富的生存游戏，使用可升级的武器和能力与无尽的怪物大军作战。">
     <link rel="canonical" href="https://monstersurvivors.com/">
-    <meta name="keywords" content="Monster Survivors, survival game, action game, online game, roguelike">
-    <meta property="og:title" content="Monster Survivors - Action-Packed Survival Game">
-    <meta property="og:description" content="Battle endless hordes of monsters in this thrilling survival adventure game.">
+    <meta name="keywords" content="怪物幸存者, 生存游戏, 动作游戏, 在线游戏, roguelike">
+    <meta property="og:title" content="怪物幸存者 - 动作丰富的生存游戏">
+    <meta property="og:description" content="在这款惊险刺激的生存冒险游戏中与无尽的怪物军团作战。">
     <meta property="og:url" content="https://monstersurvivors.com/">
     <meta property="og:type" content="website">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,19 +17,17 @@
             theme: {
                 extend: {
                     colors: {
-                        apple: {
-                            blue: '#007AFF',
-                            indigo: '#5856D6',
-                            purple: '#AF52DE',
-                            pink: '#FF2D55',
-                            red: '#FF3B30',
-                            orange: '#FF9500',
-                            yellow: '#FFCC00',
-                            green: '#34C759',
-                            teal: '#5AC8FA',
-                            gray: '#8E8E93',
-                            lightgray: '#F2F2F7',
-                            darkgray: '#1C1C1E'
+                        redalert: {
+                            red: '#CC0000',         // 经典红警红色
+                            darkred: '#8B0000',     // 深红色
+                            black: '#1A1A1A',       // 主要黑色
+                            gray: '#333333',        // 深灰色
+                            lightgray: '#666666',   // 浅灰色
+                            accent: '#FFCC00',      // 黄色强调色（类似警告标识）
+                            soviet: '#DE0000',      // 苏联红
+                            allied: '#0052A5',      // 盟军蓝（作为次要色）
+                            button: '#C00',         // 按钮红色
+                            highlight: '#FF3333'    // 高亮红色
                         }
                     }
                 }
@@ -38,9 +36,10 @@
     </script>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            background-color: #F2F2F7;
-            color: #1C1C1E;
+            font-family: 'Microsoft YaHei', '微软雅黑', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #1A1A1A;
+            color: #DDDDDD;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23333333' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='1'/%3E%3Ccircle cx='13' cy='13' r='1'/%3E%3C/g%3E%3C/svg%3E");
         }
         
         .game-container {
@@ -48,6 +47,8 @@
             width: 100%;
             overflow: hidden;
             padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border: 3px solid #CC0000 !important;
+            box-shadow: 0 0 20px rgba(204, 0, 0, 0.5);
         }
         
         .game-iframe {
@@ -63,19 +64,51 @@
         
         .feature-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(51, 51, 51, 0.9);
+            border: 1px solid #CC0000;
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(204, 0, 0, 0.7);
+            border-color: #FF3333;
         }
         
         .btn-play {
             transition: all 0.3s ease;
+            background: linear-gradient(to bottom, #CC0000, #8B0000);
+            border: 2px solid #FFCC00;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+            box-shadow: 0 0 10px rgba(204, 0, 0, 0.7);
         }
         
         .btn-play:hover {
             transform: scale(1.05);
+            background: linear-gradient(to bottom, #FF3333, #CC0000);
+            box-shadow: 0 0 20px rgba(255, 51, 51, 0.9);
+        }
+
+        h1, h2, h3 {
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #FFFFFF;
+            text-shadow: 0 0 10px rgba(204, 0, 0, 0.7);
+        }
+
+        .red-border {
+            border-bottom: 3px solid #CC0000;
+            position: relative;
+        }
+
+        .red-border:after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            right: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, #CC0000, transparent);
         }
 
         @media (max-width: 640px) {
@@ -89,19 +122,19 @@
     </style>
 </head>
 <body>
-    <header class="bg-apple-darkgray text-white shadow-lg">
+    <header class="bg-redalert-black text-white shadow-lg border-b-2 border-redalert-red">
         <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
             <div class="flex flex-col md:flex-row items-center">
-                <div class="font-bold text-2xl md:text-3xl tracking-tight mb-2 md:mb-0">
-                    Monster Survivors
+                <div class="font-bold text-2xl md:text-3xl tracking-tight mb-2 md:mb-0 text-redalert-red">
+                    怪物幸存者
                 </div>
-                <div class="md:ml-4 text-sm md:text-base text-apple-lightgray">
-                    Battle endless hordes in this action-packed survival adventure
+                <div class="md:ml-4 text-sm md:text-base text-gray-300">
+                    在这场动作冒险生存战中与无尽敌军作战
                 </div>
             </div>
             <div class="mt-4 md:mt-0">
-                <button class="btn-play bg-apple-green text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-opacity-90">
-                    Play Now
+                <button class="btn-play text-white font-bold py-2 px-6 rounded-sm shadow-lg">
+                    立即开始
                 </button>
             </div>
         </div>
@@ -109,116 +142,116 @@
 
     <main class="container mx-auto px-4 py-8">
         <section class="mb-12 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-apple-darkgray">
-                Monster Survivors
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-redalert-red">
+                怪物幸存者
             </h1>
-            <p class="text-xl md:text-2xl text-apple-gray mb-8">
-                Survive against relentless waves of monsters in this addictive roguelike adventure game.
+            <p class="text-xl md:text-2xl text-gray-300 mb-8">
+                在这款令人上瘾的 Roguelike 冒险游戏中对抗无情的怪物浪潮。
             </p>
             
-            <div class="game-container rounded-lg shadow-2xl overflow-hidden border-4 border-apple-blue">
+            <div class="game-container rounded-sm shadow-2xl overflow-hidden">
                 <iframe src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html" class="game-iframe" allowfullscreen></iframe>
             </div>
         </section>
 
         <section class="mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-apple-darkgray border-b-2 border-apple-blue pb-2">
-                Game Overview
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-redalert-red red-border pb-2">
+                游戏概述
             </h2>
             <div class="text-lg">
                 <p class="mb-4">
-                    <strong>Monster Survivors</strong> is an intense survival action game where you face endless waves of increasingly difficult monsters. Choose your character, unlock powerful weapons and abilities, and see how long you can last against the monstrous hordes.
+                    <strong>怪物幸存者</strong>是一款激烈的生存动作游戏，你将面对无尽且难度不断提升的怪物波次。选择你的角色，解锁强大的武器和能力，看看你能在这些可怕的大军面前坚持多久。
                 </p>
                 <p class="mb-4">
-                    As you progress, you'll collect experience to level up, choose new abilities, and upgrade your arsenal to become more powerful. But beware - the monsters will also grow stronger and more numerous with each passing minute!
+                    随着游戏进程，你将收集经验值以升级，选择新的能力，并升级你的武器库以变得更加强大。但要小心 - 随着每一分钟的过去，怪物也会变得更加强大和数量更多！
                 </p>
                 <p>
-                    With its addictive gameplay loop, diverse character builds, and challenging progression system, Monster Survivors offers endless hours of monster-slaying fun.
+                    凭借其令人上瘾的游戏循环，多样化的角色构建和具有挑战性的进阶系统，怪物幸存者提供了无尽的屠杀怪物乐趣。
                 </p>
             </div>
         </section>
 
         <section class="mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-apple-darkgray border-b-2 border-apple-orange pb-2">
-                Key Features
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-redalert-red red-border pb-2">
+                主要特点
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="feature-card bg-white p-6 rounded-lg shadow-md border-l-4 border-apple-blue">
-                    <h3 class="text-xl font-bold mb-2 text-apple-blue">Endless Action</h3>
-                    <p>Face wave after wave of increasingly difficult monsters in an endless battle for survival.</p>
+                <div class="feature-card p-6 rounded-sm shadow-md border-l-4 border-redalert-red">
+                    <h3 class="text-xl font-bold mb-2 text-redalert-red">无尽战斗</h3>
+                    <p>在这场无尽的生存战斗中面对一波又一波难度不断提升的怪物。</p>
                 </div>
-                <div class="feature-card bg-white p-6 rounded-lg shadow-md border-l-4 border-apple-purple">
-                    <h3 class="text-xl font-bold mb-2 text-apple-purple">Character Progression</h3>
-                    <p>Level up your character, unlock new abilities, and upgrade your weapons to become more powerful.</p>
+                <div class="feature-card p-6 rounded-sm shadow-md border-l-4 border-redalert-soviet">
+                    <h3 class="text-xl font-bold mb-2 text-redalert-soviet">角色进阶</h3>
+                    <p>升级你的角色，解锁新能力，并升级你的武器以变得更加强大。</p>
                 </div>
-                <div class="feature-card bg-white p-6 rounded-lg shadow-md border-l-4 border-apple-green">
-                    <h3 class="text-xl font-bold mb-2 text-apple-green">Diverse Builds</h3>
-                    <p>Create unique character builds with different combinations of weapons, abilities, and passive upgrades.</p>
+                <div class="feature-card p-6 rounded-sm shadow-md border-l-4 border-redalert-accent">
+                    <h3 class="text-xl font-bold mb-2 text-redalert-accent">多样化构建</h3>
+                    <p>通过不同的武器、能力和被动升级组合创造独特的角色构建。</p>
                 </div>
-                <div class="feature-card bg-white p-6 rounded-lg shadow-md border-l-4 border-apple-red">
-                    <h3 class="text-xl font-bold mb-2 text-apple-red">Boss Battles</h3>
-                    <p>Test your skills against massive boss monsters with unique abilities and attack patterns.</p>
+                <div class="feature-card p-6 rounded-sm shadow-md border-l-4 border-redalert-highlight">
+                    <h3 class="text-xl font-bold mb-2 text-redalert-highlight">boss战斗</h3>
+                    <p>挑战拥有独特能力和攻击模式的巨型boss怪物，测试你的技能。</p>
                 </div>
-                <div class="feature-card bg-white p-6 rounded-lg shadow-md border-l-4 border-apple-orange">
-                    <h3 class="text-xl font-bold mb-2 text-apple-orange">Unlockable Content</h3>
-                    <p>Discover new characters, weapons, and abilities as you progress through the game.</p>
+                <div class="feature-card p-6 rounded-sm shadow-md border-l-4 border-redalert-allied">
+                    <h3 class="text-xl font-bold mb-2 text-redalert-allied">可解锁内容</h3>
+                    <p>随着游戏进程发现新角色、武器和能力。</p>
                 </div>
-                <div class="feature-card bg-white p-6 rounded-lg shadow-md border-l-4 border-apple-teal">
-                    <h3 class="text-xl font-bold mb-2 text-apple-teal">Easy to Learn</h3>
-                    <p>Simple controls make the game accessible to everyone, but mastering it takes skill and strategy.</p>
+                <div class="feature-card p-6 rounded-sm shadow-md border-l-4 border-redalert-accent">
+                    <h3 class="text-xl font-bold mb-2 text-redalert-accent">易于学习</h3>
+                    <p>简单的控制使游戏对所有人都很容易上手，但掌握它需要技巧和策略。</p>
                 </div>
             </div>
         </section>
 
         <section class="mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-apple-darkgray border-b-2 border-apple-green pb-2">
-                How to Play
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-redalert-red red-border pb-2">
+                游戏方法
             </h2>
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="bg-redalert-gray p-6 rounded-sm shadow-md border border-redalert-red">
                 <ul class="list-disc pl-5 space-y-2">
-                    <li>Use <strong>WASD</strong> or <strong>arrow keys</strong> to move your character</li>
-                    <li>Your character attacks automatically when monsters are in range</li>
-                    <li>Collect experience gems to level up</li>
-                    <li>Choose new abilities and upgrades when you level up</li>
-                    <li>Survive as long as possible against the monster hordes</li>
-                    <li>On mobile, use the virtual joystick to control movement</li>
+                    <li>使用<strong>WASD</strong>或<strong>方向键</strong>移动你的角色</li>
+                    <li>当怪物在攻击范围内时，你的角色会自动攻击</li>
+                    <li>收集经验宝石以升级</li>
+                    <li>升级时选择新的能力和升级</li>
+                    <li>在怪物大军面前尽可能长时间生存</li>
+                    <li>在移动设备上，使用虚拟摇杆控制移动</li>
                 </ul>
             </div>
         </section>
 
         <section>
-            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-apple-darkgray border-b-2 border-apple-purple pb-2">
-                Start Your Adventure
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-redalert-red red-border pb-2">
+                开始你的冒险
             </h2>
             <div class="text-center">
                 <p class="text-lg mb-6">
-                    Ready to test your survival skills? Jump into Monster Survivors now and see how long you can last!
+                    准备好测试你的生存技能了吗？立即投入怪物幸存者的战斗，看看你能坚持多久！
                 </p>
-                <button class="btn-play bg-apple-green text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-opacity-90 text-xl">
-                    Play Monster Survivors
+                <button class="btn-play text-white font-bold py-3 px-8 rounded-sm shadow-lg text-xl">
+                    立即畅玩怪物幸存者
                 </button>
             </div>
         </section>
     </main>
 
-    <footer class="bg-apple-darkgray text-white mt-12 py-8">
+    <footer class="bg-redalert-black text-white mt-12 py-8 border-t-2 border-redalert-red">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <div class="font-bold text-xl">Monster Survivors</div>
-                    <div class="text-sm text-apple-lightgray">© 2025 Monster Survivors. All rights reserved.</div>
+                    <div class="font-bold text-xl text-redalert-red">怪物幸存者</div>
+                    <div class="text-sm text-gray-400">© 2025 怪物幸存者，保留所有权利。</div>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-apple-lightgray hover:text-apple-blue transition-colors">Privacy Policy</a>
-                    <a href="#" class="text-apple-lightgray hover:text-apple-blue transition-colors">Terms of Service</a>
-                    <a href="#" class="text-apple-lightgray hover:text-apple-blue transition-colors">Contact</a>
+                    <a href="#" class="text-gray-400 hover:text-redalert-red transition-colors">隐私政策</a>
+                    <a href="#" class="text-gray-400 hover:text-redalert-red transition-colors">服务条款</a>
+                    <a href="#" class="text-gray-400 hover:text-redalert-red transition-colors">联系我们</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scroll for anchor links
+        // 平滑滚动锚链接
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -228,7 +261,7 @@
             });
         });
 
-        // Make the "Play Now" buttons scroll to the game iframe
+        // 使"立即开始"按钮滚动到游戏iframe
         document.querySelectorAll('.btn-play').forEach(button => {
             button.addEventListener('click', function() {
                 document.querySelector('.game-container').scrollIntoView({
@@ -237,7 +270,7 @@
             });
         });
 
-        // Simple responsive menu toggle (for future expansion)
+        // 简单的响应式菜单切换（用于未来扩展）
         const setupMobileMenu = () => {
             const menuToggle = document.querySelector('.menu-toggle');
             const mobileMenu = document.querySelector('.mobile-menu');
@@ -249,7 +282,7 @@
             }
         };
 
-        // Call setup function when DOM is loaded
+        // 当DOM加载完成时调用设置函数
         document.addEventListener('DOMContentLoaded', setupMobileMenu);
     </script>
 </body>
